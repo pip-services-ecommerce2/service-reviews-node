@@ -1,0 +1,11 @@
+/node_modules
+/npm-debug.log
+/.idea
+/data/reviews.test.json
+/data/reviews.json
+/data/ratings.test.json
+/data/ratings.json
+/obj/test
+/docker/id_rsa*
+/docker/.npmrc
+/package-lock.json

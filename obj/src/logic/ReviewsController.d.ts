@@ -1,0 +1,32 @@
+import { ConfigParams, SortParams } from 'pip-services3-commons-nodex';
+import { IConfigurable } from 'pip-services3-commons-nodex';
+import { IReferences } from 'pip-services3-commons-nodex';
+import { IReferenceable } from 'pip-services3-commons-nodex';
+import { FilterParams } from 'pip-services3-commons-nodex';
+import { PagingParams } from 'pip-services3-commons-nodex';
+import { DataPage } from 'pip-services3-commons-nodex';
+import { ICommandable } from 'pip-services3-commons-nodex';
+import { CommandSet } from 'pip-services3-commons-nodex';
+import { ReviewV1 } from '../data/version1/ReviewV1';
+import { RatingV1 } from '../data/version1/RatingV1';
+import { IReviewsController } from './IReviewsController';
+export declare class ReviewsController implements IConfigurable, IReferenceable, ICommandable, IReviewsController {
+    private static _defaultConfig;
+    private _dependencyResolver;
+    private _reviewsPersistence;
+    private _ratingsPersistence;
+    private _commandSet;
+    constructor();
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    getCommandSet(): CommandSet;
+    getReviews(correlationId: string, filter: FilterParams, paging: PagingParams, sorting: SortParams): Promise<DataPage<ReviewV1>>;
+    getReviewById(correlationId: string, reviewId: string): Promise<ReviewV1>;
+    getPartyReview(correlationId: string, partyId: string, productId: string): Promise<ReviewV1>;
+    getProductRating(correlationId: string, productId: string): Promise<RatingV1>;
+    submitReview(correlationId: string, review: ReviewV1): Promise<RatingV1>;
+    updateReview(correlationId: string, review: ReviewV1): Promise<RatingV1>;
+    reportHelpful(correlationId: string, reviewId: string, partyId: string): Promise<ReviewV1>;
+    reportAbuse(correlationId: string, reviewId: string, partyId: string): Promise<ReviewV1>;
+    deleteReviewById(correlationId: string, reviewId: string): Promise<RatingV1>;
+}
